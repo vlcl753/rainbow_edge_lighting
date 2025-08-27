@@ -1,4 +1,4 @@
-library rainbow_edge_lighting;
+library;
 
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -8,7 +8,7 @@ List<Color> smoothLoop(List<Color> colors) {
   if (colors.isEmpty) return colors;
   final first = colors.first;
   final last  = colors.last;
-  if (first.value == last.value) return colors;
+  if (first.r == last.r) return colors;
   return [...colors, first];
 }
 
@@ -307,7 +307,7 @@ class _RainbowPainter extends CustomPainter {
       final baseAlpha = (1.0 - opacity).clamp(0.0, 1.0);
       if (baseAlpha > 0) {
         final basePaint = Paint()
-          ..color = baseColor.withValues(alpha: baseColor.opacity * baseAlpha)
+          ..color = baseColor.withValues(alpha: baseColor.a * baseAlpha)
           ..style = PaintingStyle.stroke
           ..strokeWidth = baseThickness
           ..isAntiAlias = true;
