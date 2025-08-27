@@ -1,4 +1,6 @@
 # Changelog
+## 1.1.0
+- fix dart analyze.
 ## 1.0.9
 - The README has been updated.
 ## 1.0.8

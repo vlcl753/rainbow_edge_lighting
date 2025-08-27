@@ -8,7 +8,7 @@ A Flutter widget that adds animated rainbow edge lighting around any child widge
 
 ```yaml
 dependencies:
-  rainbow_edge_lighting: ^1.0.9
+  rainbow_edge_lighting: ^1.1.0
 ```
 
 ---

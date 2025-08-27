@@ -1,6 +1,6 @@
 name: rainbow_edge_lighting
 description: Animated rainbow edge lighting painter for Flutter widgets with smooth fade and disabled border blending.
-version: 1.0.9
+version: 1.1.0
 repository: https://github.com/vlcl753/rainbow_edge_lighting
 homepage: https://github.com/vlcl753/rainbow_edge_lighting
 issue_tracker: https://github.com/vlcl753/rainbow_edge_lighting/issues
