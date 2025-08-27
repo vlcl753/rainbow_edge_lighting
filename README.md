@@ -2,14 +2,13 @@
 
 A Flutter widget that adds animated rainbow edge lighting around any child widget.
 
-![rainbow edge lighting screen](rainbow_screen.gif)
-
+![Rainbow edge lighting screen](https://github.com/vlcl753/rainbow_edge_lighting/blob/main/rainbow_screen.gif?raw=true)
 
 ## Installation
 
 ```yaml
 dependencies:
-  rainbow_edge_lighting: ^1.0.8
+  rainbow_edge_lighting: ^1.0.9
 ```
 
 ---
@@ -35,8 +34,9 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return Center(
       child: RainbowEdgeLighting(
-        radius: 56,        // corner radius
-        thickness: 3.0,    // stroke width
+        glowEnabled: true, // Enable outer glow halo
+        radius: 20,        // corner radius
+        thickness: 2.0,    // stroke width
         enabled: enabled,  // fade in/out when toggled
         speed: 0.8,        // rotations per second (rps)
         clip: false,       // clip the child with the same radius
@@ -61,17 +61,17 @@ All accepted parameters:
 | Name                      | Type            | Usage                                                                 | Required | Default |
 |---------------------------|-----------------|-----------------------------------------------------------------------|:--------:|:-------:|
 | `child`                   | `Widget`        | The inner widget inside the lighting border                           | **yes**  | `null`  |
-| `radius`                  | `double`        | Corner radius of the border                                           | no       | `56`    |
-| `thickness`               | `double`        | Rainbow stroke width                                                  | no       | `3.0`   |
-| `colors`                  | `List<Color>?`  | Gradient colors (falls back to a rainbow palette)                     | no       | `[red, orange, yellow, green, blue, indigo, purple, red]` |
-| `enabled`                 | `bool`          | Turn animation on/off (with fade)                                     | no       | `true`  |
-| `speed`                   | `double`        | Rotation speed in rps (0 = stop)                                      | no       | `0.8`   |
-| `fadeDuration`            | `Duration`      | Fade-in/out duration when toggling                                    | no       | `300ms` |
-| `clip`                    | `bool`          | Clip the child with the same `radius`                                 | no       | `false` |
-| `glowEnabled`             | `bool`          | Enable outer glow halo (same palette as stroke)                       | no       | `true`  |
-| `showBorderWhenDisabled`  | `bool`          | Keep a static base border when disabled/faded out                     | no       | `true`  |
-| `disabledBorderColor`     | `Color`         | Base border color when disabled                                       | no       | `0x33000000` |
-| `disabledBorderThickness` | `double?`       | Base border width when disabled (defaults to `thickness`)             | no       | `= thickness` |
+| `radius`                  | `double`        | Corner radius of the border                                           | **yes**  | `null`    |
+| `thickness`               | `double`        | Rainbow stroke width                                                  |    no    | `3.0`   |
+| `colors`                  | `List<Color>?`  | Gradient colors (falls back to a rainbow palette)                     |    no    | `[red, orange, yellow, green, blue, indigo, purple, red]` |
+| `enabled`                 | `bool`          | Turn animation on/off (with fade)                                     |    no    | `true`  |
+| `speed`                   | `double`        | Rotation speed in rps (0 = stop)                                      |    no    | `0.8`   |
+| `fadeDuration`            | `Duration`      | Fade-in/out duration when toggling                                    |    no    | `300ms` |
+| `clip`                    | `bool`          | Clip the child with the same `radius`                                 |    no    | `false` |
+| `glowEnabled`             | `bool`          | Enable outer glow halo (same palette as stroke)                       |    no    | `true`  |
+| `showBorderWhenDisabled`  | `bool`          | Keep a static base border when disabled/faded out                     |    no    | `true`  |
+| `disabledBorderColor`     | `Color`         | Base border color when disabled                                       |    no    | `0x33000000` |
+| `disabledBorderThickness` | `double?`       | Base border width when disabled (defaults to `thickness`)             |    no    | `= thickness` |
 
 **Notes**
 - `speed` uses **rps (rotations per second)**. Example: `1.0` → one full rotation per second.
@@ -92,6 +92,7 @@ RainbowEdgeLighting(
     Color(0xFFFF0080), // close the loop
   ],
   speed: 1.2,
+  radius: 20,
   child: const Text('Custom Colors'),
 )
 ```
@@ -100,6 +101,7 @@ RainbowEdgeLighting(
 ```dart
 RainbowEdgeLighting(
   enabled: false,                 // animation off (fades out)
+  radius: 20,
   showBorderWhenDisabled: true,   // keep static border
   disabledBorderColor: Colors.grey.withOpacity(0.4),
   disabledBorderThickness: 2.0,
@@ -115,6 +117,7 @@ RainbowEdgeLighting(
   child: Container(
     width: 160,
     height: 64,
+    radius: 20,
     color: Colors.black,
     alignment: Alignment.center,
     child: const Text('Clipped'),

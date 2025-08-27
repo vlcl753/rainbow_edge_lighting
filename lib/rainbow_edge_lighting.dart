@@ -17,7 +17,7 @@ class RainbowEdgeLighting extends StatefulWidget {
   const RainbowEdgeLighting({
     super.key,
     required this.child,
-    this.radius = 56,
+    required this.radius,
     this.thickness = 3.0,
     this.colors,
     this.enabled = true,
@@ -237,7 +237,7 @@ class _GlowPainter extends CustomPainter {
       ..maskFilter = MaskFilter.blur(BlurStyle.normal, blurOuter * 0.9) // ← 블러 40%
       ..isAntiAlias = true
       ..colorFilter = ColorFilter.mode(
-        Colors.white.withOpacity(opacity * 0.30),   // ← 0.75 → 0.50
+        Colors.white.withValues(alpha: opacity * 0.30),   // ← 0.75 → 0.50
         BlendMode.modulate,
       )
       ..blendMode = BlendMode.srcOver;
@@ -253,7 +253,7 @@ class _GlowPainter extends CustomPainter {
       ..maskFilter = MaskFilter.blur(BlurStyle.normal, blurOuter * 0.2) // ← 블러 40%
       ..isAntiAlias = true
       ..colorFilter = ColorFilter.mode(
-        Colors.white.withOpacity(opacity * 1),
+        Colors.white.withValues(alpha: opacity * 1),
         BlendMode.modulate,
       )
       ..blendMode = BlendMode.srcOver;
@@ -307,7 +307,7 @@ class _RainbowPainter extends CustomPainter {
       final baseAlpha = (1.0 - opacity).clamp(0.0, 1.0);
       if (baseAlpha > 0) {
         final basePaint = Paint()
-          ..color = baseColor.withOpacity(baseColor.opacity * baseAlpha)
+          ..color = baseColor.withValues(alpha: baseColor.opacity * baseAlpha)
           ..style = PaintingStyle.stroke
           ..strokeWidth = baseThickness
           ..isAntiAlias = true;
@@ -330,7 +330,7 @@ class _RainbowPainter extends CustomPainter {
       ..strokeWidth = thickness
       ..isAntiAlias = true
       ..colorFilter = ColorFilter.mode(
-        Colors.white.withOpacity(opacity),
+        Colors.white.withValues(alpha: opacity),
         BlendMode.modulate,
       );
 
